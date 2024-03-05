@@ -1,4 +1,4 @@
-# projecy
+# vue_project
 
 ## Project setup
 ```
