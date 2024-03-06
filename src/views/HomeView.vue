@@ -1,88 +1,6 @@
 <template>
   <el-container style="min-height: 100vh;">
-      <el-aside :width="sidewith+'px'" style="background-color: rgba(96, 48, 122, 0.93);  box-shadow: 2px 0 10px rgba(0, 14, 21, 0.5)">
-        <el-menu :default-openeds="['1', '3']" style="min-height: 100%;overflow-x: hidden;"
-          background-color="rgba(96, 48, 122, 0.93)"
-          text-color="#fff"
-          active-text-color="rgba(0, 0, 130, 1)"
-          :collapse-transition="false"
-          :collapse="isCollapse"
-          class="el-minu-vertical-demo">
-          <div style="height: 60px; line-height: 60px; text-align: center;">
-            <img src="../assets/logo.png" style="width: 20px; position: relative; top: 5px; " >
-            <b style="color: #ccc;margin-left: 5px;" v-if="!isCollapse">後臺管理系統</b>
-          </div>
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-message"></i>
-              <span slot="title">导航一</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-
-            <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-
-          </el-submenu>
-
-          <el-submenu index="2">
-
-            <template slot="title">
-              <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="2-3">选项3</el-menu-item>
-              </el-menu-item-group>
-
-              <el-submenu index="2-4">
-                <template slot="title">选项4</template>
-              <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-
-          </el-submenu>
-
-          <el-submenu index="3">
-
-            <template slot="title">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航三</span>
-            </template>
-            <el-menu-item-group>
-              <template slot="title">分组一</template>
-                <el-menu-item index="3-1">选项1</el-menu-item>
-                <el-menu-item index="3-2">选项2</el-menu-item>
-              </el-menu-item-group>
-
-            <el-menu-item-group title="分组2">
-              <el-menu-item index="3-3">选项3</el-menu-item>
-            </el-menu-item-group>
-
-            <el-submenu index="3-4">
-              <template slot="title">选项4</template>
-            <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-            </el-submenu>
-
-          </el-submenu>
-
-        </el-menu>
-      </el-aside>
-  
+      <navBar :sidewith="sidewith" :isCollapse="isCollapse" />
       <el-container>
         <el-header style=" font-size: 12px; border-bottom: 1px solid #ccc; line-height: 60px;display: flex;">
           <div style="flex:1;font-size: 18px;">
@@ -99,10 +17,17 @@
         </el-header>
         
         <el-main>
-          <div style="padding: 10px 0;">
-            <el-input style="width: 200px;"></el-input><el-button></el-button>
+          <div style="margin: 10px 0;">
+            <el-input style="width: 200px; margin-right: 5px;" prefix-icon="el-icon-search" placeholder="請輸入"></el-input>
+            <el-button class="ml-5" >搜尋</el-button>
           </div>
-          <el-table :data="tableData">
+
+          <div style="margin: 10px 0;">
+            <el-button class="ml-5" icon="el-icon-circle-plus-outline" >insert</el-button>
+            <el-button class="ml-5" icon="el-icon-remove-outline" >delete</el-button>
+          </div>
+          
+          <el-table :data="tableData" height="480"stripe :header-cell-style="{background: 'rgba(211, 150, 224, 0.8)'}">
             <el-table-column prop="date" label="日期" width="140">
             </el-table-column>
             <el-table-column prop="name" label="姓名" width="120">
@@ -123,13 +48,14 @@
           </div>
         </el-main>
       </el-container>
-    </el-container>
+  </el-container>
 </template>
 
 <script>
-
+import navBar from '@/components/navBar';
 export default {
   name: 'HomeView',
+  components:{navBar},
   data() {
     const item = {
         date: '2016-05-02',
