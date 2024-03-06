@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside :width="sidewith+'px'" style="background-color: rgba(96, 48, 122, 0.93);  box-shadow: 2px 0 10px rgba(0, 14, 21, 0.5)">
+    <el-aside :collapse-transition="true" :width="sidewith+'px'" style="background-color: rgba(96, 48, 122, 0.93);  box-shadow: 2px 0 10px rgba(0, 14, 21, 0.5)">
         <el-menu :default-openeds="['1', '3']" style="min-height: 100%;overflow-x: hidden;"
           background-color="rgba(96, 48, 122, 0.93)"
           text-color="#fff"
