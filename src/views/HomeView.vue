@@ -19,12 +19,12 @@
         <el-main>
           <div style="margin: 10px 0;">
             <el-input style="width: 200px; margin-right: 5px;" prefix-icon="el-icon-search" placeholder="請輸入"></el-input>
-            <el-button class="ml-5" >搜尋</el-button>
+            <el-button>搜尋</el-button>
           </div>
 
           <div style="margin: 10px 0;">
-            <el-button class="ml-5" icon="el-icon-circle-plus-outline" >insert</el-button>
-            <el-button class="ml-5" icon="el-icon-remove-outline" >delete</el-button>
+            <el-button icon="el-icon-circle-plus-outline" >insert</el-button>
+            <el-button  icon="el-icon-remove-outline" >delete</el-button>
           </div>
           
           <el-table :data="tableData" height="480"stripe :header-cell-style="{background: 'rgba(211, 150, 224, 0.8)'}">
